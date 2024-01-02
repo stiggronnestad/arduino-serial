@@ -164,7 +164,7 @@ namespace Usignert.ArduinoSerial
         public void SendCommand(string command)
         {
             if (!_serialPort.IsOpen || !_ready) return;
-            _serialPort.WriteLine(command);
+            _serialPort.Write(command + EndOfSubmissionChar);
             // HACK: To avoid bogus data this is needed, maybe there is a b etter way? Byte queue?
             Thread.Sleep(25);
         }
